@@ -457,7 +457,6 @@ public class Benchmark
                                              .routeId(routeId)
                                              .streamId(initialId)
                                              .trace(traceId)
-                                             .correlationId(replyId)
                                              .build();
 
                 final BenchmarkStream newStream = new BenchmarkStream(routeId, initialId, replyId);
