@@ -115,7 +115,7 @@
         <version>${nukleus.plugin.version}</version>
         <configuration>
           <scopeNames>core</scopeNames>
-          <packageName>org.reaktivity.bench.internal.types</packageName>
+          <packageName>org.reaktivity.ry.bench.internal.types</packageName>
         </configuration>
         <executions>
           <execution>
@@ -187,7 +187,7 @@
         <version>0.7.9</version>
         <configuration>
           <excludes>
-            <exclude>org/reaktivity/bench/internal/types/**/*.class</exclude>
+            <exclude>org/reaktivity/ry/bench/internal/types/**/*.class</exclude>
           </excludes>
           <rules>
             <rule>

@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.reaktivity.bench.internal;
+package org.reaktivity.ry.bench.internal;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.String.format;
