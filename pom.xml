@@ -5,10 +5,10 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.reaktivity</groupId>
-  <artifactId>bench.ry</artifactId>
+  <artifactId>ry-bench</artifactId>
   <version>develop-SNAPSHOT</version>
-  <name>Build Template for Java Projects</name>
-  <url>https://github.com/reaktivity/bench.ry</url>
+  <name>Reaktivity Bench Command</name>
+  <url>https://github.com/reaktivity/ry-bench.java</url>
 
   <licenses>
     <license>
@@ -29,9 +29,9 @@
   </developers>
 
   <scm>
-    <connection>scm:git:https://github.com/reaktivity/bench.ry</connection>
-    <developerConnection>scm:git:https://github.com/reaktivity/bench.ry</developerConnection>
-    <url>https://github.com/reaktivity/bench.ry</url>
+    <connection>scm:git:https://github.com/reaktivity/ry-bench.java</connection>
+    <developerConnection>scm:git:https://github.com/reaktivity/ry-bench.java</developerConnection>
+    <url>https://github.com/reaktivity/ry-bench.java</url>
   </scm>
 
   <properties>
@@ -231,34 +231,6 @@
         <configuration>
           <argLine>@{argLine}</argLine>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>3.0.0</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-            <configuration>
-              <transformers>
-                <transformer
-                  implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>org.reaktivity.bench.internal.BenchCommand</mainClass>
-                  <manifestEntries>
-                    <Name>${project.groupId}/${project.artifactId}</Name>
-                    <Specification-Title>${project.name}</Specification-Title>
-                    <Specification-Version>${project.version}</Specification-Version>
-                    <Specification-Vendor>${project.groupId}</Specification-Vendor>
-                  </manifestEntries>
-                </transformer>
-                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
-              </transformers>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
