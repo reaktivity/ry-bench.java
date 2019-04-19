@@ -1,2 +1,2 @@
-# bench.ry
-Bench Tool
+# ry-bench.java
+Reaktivity Bench Command
