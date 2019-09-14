@@ -211,7 +211,7 @@ public final class BenchCommand
     {
         final Set<String> properties = new TreeSet<>();
         reaktor.properties((s, o) -> properties.add(String.format("%s = %s\n", s, o)),
-                           (s, o) -> properties.add(String.format("%s = %s (default)\n", s, o)));
+            (s, o) -> properties.add(String.format("%s = %s (default)\n", s, o)));
         properties.forEach(out);
     }
 

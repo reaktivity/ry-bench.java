@@ -43,6 +43,11 @@ import org.agrona.MutableDirectBuffer;
 import org.agrona.collections.Long2ObjectHashMap;
 import org.agrona.concurrent.Agent;
 import org.agrona.concurrent.UnsafeBuffer;
+import org.reaktivity.nukleus.AgentBuilder;
+import org.reaktivity.nukleus.function.MessageConsumer;
+import org.reaktivity.nukleus.stream.StreamFactory;
+import org.reaktivity.reaktor.internal.router.RouteId;
+import org.reaktivity.reaktor.internal.types.control.Role;
 import org.reaktivity.ry.bench.internal.types.OctetsFW;
 import org.reaktivity.ry.bench.internal.types.stream.AbortFW;
 import org.reaktivity.ry.bench.internal.types.stream.BeginFW;
@@ -51,11 +56,6 @@ import org.reaktivity.ry.bench.internal.types.stream.EndFW;
 import org.reaktivity.ry.bench.internal.types.stream.FrameFW;
 import org.reaktivity.ry.bench.internal.types.stream.ResetFW;
 import org.reaktivity.ry.bench.internal.types.stream.WindowFW;
-import org.reaktivity.nukleus.AgentBuilder;
-import org.reaktivity.nukleus.function.MessageConsumer;
-import org.reaktivity.nukleus.stream.StreamFactory;
-import org.reaktivity.reaktor.internal.router.RouteId;
-import org.reaktivity.reaktor.internal.types.control.Role;
 
 public class Benchmark
 {
@@ -141,7 +141,7 @@ public class Benchmark
             this.startAt = System.currentTimeMillis();
         }
 
-//        System.out.format("[%s] iterate() %d\n", Thread.currentThread(), iterations);
+        //System.out.format("[%s] iterate() %d\n", Thread.currentThread(), iterations);
         iterations++;
         activeAgents.forEach(iterateTask);
     }
@@ -395,7 +395,7 @@ public class Benchmark
             {
                 final long millis = now - startedAt;
                 histogram.recordValue(millis);
-//                System.out.format("[%d] %d\n", iterations, (int) millis);
+                //System.out.format("[%d] %d\n", iterations, (int) millis);
             }
             this.completedAt = now;
 
