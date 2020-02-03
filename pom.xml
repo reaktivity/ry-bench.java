@@ -44,7 +44,7 @@
     <jacoco.coverage.ratio>1.00</jacoco.coverage.ratio>
     <jacoco.missed.count>0</jacoco.missed.count>
 
-    <nukleus.spec.version>0.32</nukleus.spec.version>
+    <nukleus.spec.version>0.33</nukleus.spec.version>
     <nukleus.plugin.version>0.33</nukleus.plugin.version>
   </properties>
 
@@ -54,13 +54,18 @@
         <groupId>org.reaktivity</groupId>
         <artifactId>ry-bom</artifactId>
         <type>pom</type>
-        <version>0.242</version>
+        <version>0.258</version>
         <scope>import</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
 
   <dependencies>
+    <dependency>
+      <groupId>org.reaktivity</groupId>
+      <artifactId>ry</artifactId>
+      <version>develop-SNAPSHOT</version>
+    </dependency>
     <dependency>
       <groupId>org.reaktivity</groupId>
       <artifactId>nukleus.spec</artifactId>

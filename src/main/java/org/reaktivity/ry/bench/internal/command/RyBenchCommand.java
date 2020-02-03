@@ -13,12 +13,12 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.reaktivity.ry.bench.internal;
+package org.reaktivity.ry.bench.internal.command;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.String.format;
 import static org.agrona.IoUtil.tmpDirName;
-import static org.reaktivity.reaktor.internal.ReaktorConfiguration.REAKTOR_DIRECTORY;
+import static org.reaktivity.reaktor.ReaktorConfiguration.REAKTOR_DIRECTORY;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -46,7 +46,8 @@ import org.reaktivity.nukleus.Configuration;
 import org.reaktivity.nukleus.Controller;
 import org.reaktivity.nukleus.route.RouteKind;
 import org.reaktivity.reaktor.Reaktor;
-import org.reaktivity.reaktor.internal.ReaktorConfiguration;
+import org.reaktivity.reaktor.ReaktorConfiguration;
+import org.reaktivity.ry.bench.internal.Benchmark;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -54,7 +55,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-public final class BenchCommand
+public final class RyBenchCommand implements Runnable
 {
     public static void main(
         String[] args) throws Exception
@@ -80,21 +81,33 @@ public final class BenchCommand
         }
         else
         {
-            new BenchCommand(cmdline).execute();
+            int warmups = Integer.parseInt(cmdline.getOptionValue("warmups", "0"));
+
+            // TODO: benchmark configuration
+            String address = "ws#0";
+            int connections = 1000;
+            int senders = 10;
+            int messages = connections * senders;
+            int size = 16;
+
+            Benchmark benchmark = new Benchmark(address, connections, senders, messages, size, warmups);
+            JsonArray routes = new JsonArray();
+            new RyBenchCommand(cmdline).execute(benchmark, routes);
         }
     }
 
     private final CommandLine cmdline;
     private final Gson gson;
 
-    private BenchCommand(
+    private RyBenchCommand(
         CommandLine cmdline)
     {
         this.cmdline = cmdline;
         gson = new Gson();
     }
 
-    private void execute()
+    @Override
+    public void run()
     {
         final String profile = cmdline.getOptionValue("profile");
         final int warmups = parseInt(cmdline.getOptionValue("warmups", "0"));
