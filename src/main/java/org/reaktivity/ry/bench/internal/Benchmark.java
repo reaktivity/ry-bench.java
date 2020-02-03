@@ -1,5 +1,5 @@
 /**
- * Copyright 2016-2019 The Reaktivity Project
+ * Copyright 2016-2020 The Reaktivity Project
  *
  * The Reaktivity Project licenses this file to you under the Apache License,
  * version 2.0 (the "License"); you may not use this file except in compliance
@@ -448,7 +448,7 @@ public class Benchmark
             assert startsPending == 0;
 
             final MessageConsumer readHandler = this::handleRead;
-            for (int i=0; i < maxStartsPending && starting < streams.length; i++)
+            for (int i = 0; i < maxStartsPending && starting < streams.length; i++)
             {
                 final long initialId = supplyInitialId.applyAsLong(routeId);
                 final long replyId = supplyReplyId.applyAsLong(initialId);
